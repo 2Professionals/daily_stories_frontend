@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms'; // Import here
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-landing-page',
