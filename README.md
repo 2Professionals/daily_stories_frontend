@@ -4,14 +4,14 @@ In a world overwhelmed by fake news, Daily Stories stands out as a reliable plat
 
 # Technical specs:
 
-Angular CLI: 18.2.10 / 
-Node: 20.18.1 / 
-Npm: 10.9.0
+- Angular CLI: 18.2.10
+- Node: 20.18.1
+- Npm: 10.9.0
 
 # How to run (dev mode):
 
-npm install / 
-npm start
+- npm install
+- npm start
 
 # Note:
 

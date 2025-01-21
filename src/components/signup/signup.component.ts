@@ -2,11 +2,12 @@
 import { Component } from '@angular/core';
 import { CommonModule, NgIf } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, RouterLink],
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
@@ -20,7 +21,7 @@ export class SignupComponent {
       user_lastname: ['', Validators.required],
       user_email: ['', [Validators.required, Validators.email]],
       user_password: ['', [Validators.required, Validators.minLength(8)]],
-      user_role: ['', Validators.required],
+      // user_role: ['user', Validators.required],
     });
   }
 
