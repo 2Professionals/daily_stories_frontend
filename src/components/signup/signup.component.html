@@ -67,7 +67,7 @@
         </div>
       </div>
   
-      <div class="mb-4">
+      <!-- <div class="mb-4">
         <label class="block text-sm font-medium mb-1">Role</label>
         <div class="flex gap-4">
           <label class="flex items-center">
@@ -92,12 +92,14 @@
         <div *ngIf="signupForm.get('user_role')?.touched && signupForm.get('user_role')?.invalid" class="text-red-500 text-sm mt-1">
           Please select a role.
         </div>
-      </div>
+      </div> -->
   
       <button
         type="submit"
         class="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none"
         [disabled]="!signupForm.valid"
+        [routerLink]="signupForm.valid ? '/main-feed' : null"
+
       >
         Sign Up
       </button>
