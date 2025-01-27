@@ -2,10 +2,9 @@
   <div class="absolute inset-0 bg-pink-200 blur-3xl opacity-40"></div>
 
   <div *ngIf="isLoading" class="absolute inset-0 flex items-center justify-center bg-white bg-opacity-70 z-[9999]">
-    <mat-spinner diameter="40"></mat-spinner>
+    <mat-spinner diameter="100"></mat-spinner>
   </div>
   
-
   <section
     [class.blur-md]="isLoading"
     class="relative text-center py-16 px-4 flex flex-col justify-center items-center flex-grow transition duration-200"
