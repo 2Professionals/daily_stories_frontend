@@ -24,6 +24,7 @@ export class LandingPageComponent {
   signInForm: FormGroup;
   errorMessage: string | null = null;
   isLoading = false;
+  current_year:number = new Date().getFullYear();
 
   constructor(
     private fb: FormBuilder,
@@ -51,7 +52,6 @@ export class LandingPageComponent {
       this.isLoading = true;
       this.authService.login(this.signInForm.value).subscribe({
         next: (data) => {
-          console.log('log data ===> ', data);
           if (data.status) {
             this.authService.saveToken(data.token);
             this.isLoading = false;
