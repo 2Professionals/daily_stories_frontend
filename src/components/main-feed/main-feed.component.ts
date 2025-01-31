@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
 })
 export class MainFeedComponent {
   isLoading: boolean = false;
-
+  current_year:number = new Date().getFullYear()
   constructor(
     private authService: AuthService,
     private router: Router
