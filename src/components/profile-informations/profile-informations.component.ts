@@ -1,8 +1,9 @@
 import { CommonModule, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms'; // <-- Import ReactiveFormsModule
+import { ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-profile-informations',
@@ -21,6 +22,7 @@ export class ProfileInformationsComponent {
       lastName: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
+      role: ['user', Validators.required]
     });
   }
 
@@ -28,7 +30,13 @@ export class ProfileInformationsComponent {
     if (this.profileForm.valid) {
       console.log('Form Data: ', this.profileForm.value);
     } else {
-      console.log('Form is invalid!');
+      Swal.fire({
+        title: 'Oops!',
+        text: 'PLease fill in all the infomations!',
+        icon: 'error',
+        confirmButtonText: 'OK',
+        confirmButtonColor: '#d33',
+      });
     }
   }
 }
