@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/authentication.service';
-import { Router } from '@angular/router';
+import { RouterLink, Router} from '@angular/router';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-main-feed',
   standalone: true,
-  imports: [MatProgressSpinnerModule, CommonModule],
+  imports: [MatProgressSpinnerModule, CommonModule, RouterLink],
   templateUrl: './main-feed.component.html',
   styleUrl: './main-feed.component.css',
 })
