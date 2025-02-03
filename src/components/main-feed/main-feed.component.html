@@ -4,7 +4,6 @@
     <nav class="container mx-auto px-4 py-4">
       <div class="flex justify-between items-center">
 
-        <!-- Profile Picture & Username -->
         <div class="flex items-center space-x-3">
           <button class="text-white p-2 rounded-full hover:bg-gray-700 focus:outline-none">
             <img src="assets/account_picture.jpg" alt="Profile" class="w-16 h-16 rounded-full object-cover">
@@ -12,7 +11,6 @@
           <span class="text-lg font-bold">Hi, {{ username }}!</span>
         </div>
 
-        <!-- Desktop Navigation -->
         <ul class="hidden md:flex space-x-6">
           <li>
             <button routerLink="/profile-informations" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400">
@@ -28,9 +26,8 @@
           </li>
         </ul>
 
-        <!-- Mobile Menu Button -->
         <div class="md:hidden">
-          <button id="mobile-menu-button" class="text-white">
+          <button (click)="toggleMobileMenu()" class="text-white focus:outline-none">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
             </svg>
@@ -38,11 +35,10 @@
         </div>
       </div>
 
-      <!-- Mobile Menu -->
-      <div id="mobile-menu" class="md:hidden hidden">
+      <div *ngIf="isMobileMenuOpen" class="md:hidden bg-gray-800">
         <ul class="space-y-4 py-4 text-center">
           <li>
-            <button 
+            <button routerLink="/profile-informations"
               class="block bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400">
               Profile
             </button>

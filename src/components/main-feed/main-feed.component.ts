@@ -14,9 +14,11 @@ import { CommonModule } from '@angular/common';
 export class MainFeedComponent {
   isLoading: boolean = false;
   current_year: number = new Date().getFullYear();
-  username: String = '';
+  username: string = '';
+  isMobileMenuOpen: boolean = false;
 
   constructor(private authService: AuthService, private router: Router) {}
+
   ngOnInit() {
     const userDataRaw = sessionStorage.getItem('userData');
     if (userDataRaw) {
@@ -24,9 +26,15 @@ export class MainFeedComponent {
       this.username = userData.user_username;
     }
   }
+
   logOut() {
     this.isLoading = true;
     this.authService.logout();
     this.router.navigate(['/']);
   }
+
+  toggleMobileMenu() {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  }
 }
+
