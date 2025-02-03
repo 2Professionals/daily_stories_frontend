@@ -14,7 +14,8 @@ export class AuthService {
   }
 
   saveToken(token: string): void {
-    localStorage.setItem('authToken', token);
+    // localStorage.setItem('authToken', token);
+    sessionStorage.setItem('authToken', token);
   }
 
   getToken(): string | null {
@@ -22,6 +23,7 @@ export class AuthService {
   }
 
   logout(): void {
-    localStorage.removeItem('authToken');
+    // localStorage.removeItem('authToken');
+    sessionStorage.removeItem('authToken');
   }
 }
