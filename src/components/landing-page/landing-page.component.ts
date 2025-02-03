@@ -51,11 +51,10 @@ export class LandingPageComponent {
     if (this.signInForm.valid) {
       this.isLoading = true;
       this.authService.login(this.signInForm.value).subscribe({
-        next: (data) => {
-          console.log("data (user !): ", data.data);
-          
+        next: (data) => {          
           if (data.status) {
             this.authService.saveToken(data.token);
+            sessionStorage.setItem('userData',JSON.stringify(data.data));
             this.isLoading = false;
             this.router.navigate(['/main-feed']);
           }

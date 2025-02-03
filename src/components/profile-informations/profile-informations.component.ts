@@ -1,5 +1,5 @@
 import { CommonModule, NgIf } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
@@ -22,10 +22,23 @@ export class ProfileInformationsComponent {
       lastName: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      role: ['user', Validators.required]
+      role: ['user', Validators.required],
     });
   }
-
+  ngOnInit() {
+    const userDataRaw = sessionStorage.getItem('userData');
+    if (userDataRaw) {
+      const userData = JSON.parse(userDataRaw);
+      this.profileForm.setValue({
+        username: userData.user_username,
+        firstName: userData.user_name,
+        lastName: userData.user_lastname,
+        email: userData.user_email,
+        password: userData.user_password,
+        role: userData.role_name,
+      });
+    }
+  }
   onSave() {
     if (this.profileForm.valid) {
       console.log('Form Data: ', this.profileForm.value);
