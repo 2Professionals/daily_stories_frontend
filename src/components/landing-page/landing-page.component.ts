@@ -58,7 +58,7 @@ export class LandingPageComponent {
             this.isLoading = false;
             
             if (data.data.role_name === 'super admin') {
-              window.location.href = 'http://localhost:42001/';
+              window.location.href = 'http://localhost:4201/';
             } else {
               this.router.navigate(['/main-feed']);
             }
