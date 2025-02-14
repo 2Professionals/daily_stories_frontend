@@ -54,16 +54,21 @@ export class LandingPageComponent {
         next: (data) => {          
           if (data.status) {
             this.authService.saveToken(data.token);
-            sessionStorage.setItem('userData',JSON.stringify(data.data));
+            sessionStorage.setItem('userData', JSON.stringify(data.data));
             this.isLoading = false;
-            this.router.navigate(['/main-feed']);
+            
+            if (data.data.role_name === 'super admin') {
+              window.location.href = 'http://localhost:42001/';
+            } else {
+              this.router.navigate(['/main-feed']);
+            }
           }
         },
         error: (err) => {
           this.isLoading = false;
           Swal.fire({
             title: 'Oops!',
-            text: 'Failed to log in! Please verify your informations.',
+            text: 'Failed to log in! Please verify your information.',
             icon: 'error',
             confirmButtonText: 'OK',
             confirmButtonColor: '#d33',
@@ -74,4 +79,5 @@ export class LandingPageComponent {
       });
     }
   }
+  
 }
