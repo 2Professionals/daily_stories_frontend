@@ -6,6 +6,7 @@ import { Router, RouterLink } from '@angular/router';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AuthService } from '../../services/authentication.service';
 import Swal from 'sweetalert2';
+import { environment } from '../../environments/environment';
 
 
 @Component({
@@ -58,7 +59,7 @@ export class LandingPageComponent {
             this.isLoading = false;
             
             if (data.data.role_name === 'super admin') {
-              window.location.href = 'http://localhost:42001/';
+              window.location.href = environment.dashboard_url;
             } else {
               this.router.navigate(['/main-feed']);
             }
