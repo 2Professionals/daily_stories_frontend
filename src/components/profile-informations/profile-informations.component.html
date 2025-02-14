@@ -1,107 +1,115 @@
 <div class="container mx-auto p-4">
-    <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-md">
-    
-      <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">Profile Information</h2>
-    
-      <form [formGroup]="profileForm" (ngSubmit)="onSave()">
-    
-        <div class="mb-4">
-          <label for="username" class="block text-gray-700 font-medium">Username</label>
-          <input
-            type="text"
-            id="username"
-            formControlName="username"
-            class="mt-2 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-          <div *ngIf="profileForm.get('username')?.invalid && profileForm.get('username')?.touched" class="text-red-500 text-sm mt-1">
-            Username is required and must be at least 3 characters long.
-          </div>
-        </div>
-    
-        <div class="mb-4">
-          <label for="firstName" class="block text-gray-700 font-medium">First Name</label>
-          <input
-            type="text"
-            id="firstName"
-            formControlName="firstName"
-            class="mt-2 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-          <div *ngIf="profileForm.get('firstName')?.invalid && profileForm.get('firstName')?.touched" class="text-red-500 text-sm mt-1">
-            First name is required.
-          </div>
-        </div>
-    
-        <div class="mb-4">
-          <label for="lastName" class="block text-gray-700 font-medium">Last Name</label>
-          <input
-            type="text"
-            id="lastName"
-            formControlName="lastName"
-            class="mt-2 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-          <div *ngIf="profileForm.get('lastName')?.invalid && profileForm.get('lastName')?.touched" class="text-red-500 text-sm mt-1">
-            Last name is required.
-          </div>
-        </div>
-    
-        <div class="mb-4">
-          <label for="email" class="block text-gray-700 font-medium">Email</label>
-          <input
-            type="email"
-            id="email"
-            formControlName="email"
-            class="mt-2 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-          <div *ngIf="profileForm.get('email')?.invalid && profileForm.get('email')?.touched" class="text-red-500 text-sm mt-1">
-            Please enter a valid email.
-          </div>
-        </div>
-    
-        <div class="mb-4">
-          <label for="password" class="block text-gray-700 font-medium">Password</label>
-          <input
-            type="password"
-            id="password"
-            formControlName="password"
-            class="mt-2 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-          <div *ngIf="profileForm.get('password')?.invalid && profileForm.get('password')?.touched" class="text-red-500 text-sm mt-1">
-            Password is required and must be at least 6 characters long.
-          </div>
-        </div>
-    
-        <!-- Role Field (Unchangeable) -->
-        <div class="mb-4">
-          <label for="role" class="block text-gray-700 font-medium">Role</label>
-          <input
-            type="text"
-            id="role"
-            formControlName="role"
-            class="mt-2 w-full px-4 py-2 border border-gray-300 rounded-md bg-gray-200 text-gray-500 cursor-not-allowed focus:outline-none"
-            [attr.disabled]="true"
-          />
-          <div *ngIf="profileForm.get('role')?.invalid && profileForm.get('role')?.touched" class="text-red-500 text-sm mt-1">
-            Role is required.
-          </div>
-        </div>
-    
-        <div class="flex justify-between">
-          <button
-            type="submit"
-            [disabled]="profileForm.invalid"
-            class="bg-blue-500 text-white px-6 py-3 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
-          >
-            Update
-          </button>
-          <button
-            routerLink="/main-feed"
-            type="button"
-            class="bg-red-500 text-white px-6 py-3 rounded-md hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-gray-400"
-          >
-            Cancel
-          </button>
-        </div>
-      </form>
-    </div>
-  </div>
+  <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-md">
   
+    <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">Profile Informations</h2>
+  
+    <form [formGroup]="profileForm" (ngSubmit)="onSave()">
+  
+      <div class="mb-4">
+        <label for="username" class="block text-gray-700 font-medium">Username</label>
+        <input
+          type="text"
+          id="username"
+          formControlName="username"
+          class="mt-2 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        <div *ngIf="profileForm.get('username')?.invalid && profileForm.get('username')?.touched" class="text-red-500 text-sm mt-1">
+          Username is required and must be at least 3 characters long.
+        </div>
+      </div>
+  
+      <div class="mb-4">
+        <label for="firstName" class="block text-gray-700 font-medium">First Name</label>
+        <input
+          type="text"
+          id="firstName"
+          formControlName="firstName"
+          class="mt-2 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        <div *ngIf="profileForm.get('firstName')?.invalid && profileForm.get('firstName')?.touched" class="text-red-500 text-sm mt-1">
+          First name is required.
+        </div>
+      </div>
+  
+      <div class="mb-4">
+        <label for="lastName" class="block text-gray-700 font-medium">Last Name</label>
+        <input
+          type="text"
+          id="lastName"
+          formControlName="lastName"
+          class="mt-2 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        <div *ngIf="profileForm.get('lastName')?.invalid && profileForm.get('lastName')?.touched" class="text-red-500 text-sm mt-1">
+          Last name is required.
+        </div>
+      </div>
+  
+      <div class="mb-4">
+        <label for="email" class="block text-gray-700 font-medium">Email</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          class="mt-2 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        <div *ngIf="profileForm.get('email')?.invalid && profileForm.get('email')?.touched" class="text-red-500 text-sm mt-1">
+          Please enter a valid email.
+        </div>
+      </div>
+  
+      <div class="mb-4">
+        <label for="password" class="block text-gray-700 font-medium">Password</label>
+        <input
+          type="password"
+          id="password"
+          formControlName="password"
+          class="mt-2 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        <div *ngIf="profileForm.get('password')?.invalid && profileForm.get('password')?.touched" class="text-red-500 text-sm mt-1">
+          Password is required and must be at least 6 characters long.
+        </div>
+      </div>
+  
+      <!-- Role Field (Unchangeable) -->
+      <div class="mb-4">
+        <label for="role" class="block text-gray-700 font-medium">Role</label>
+        <input
+          type="text"
+          id="role"
+          formControlName="role"
+          class="mt-2 w-full px-4 py-2 border border-gray-300 rounded-md bg-gray-200 text-gray-500 cursor-not-allowed focus:outline-none"
+          [attr.disabled]="true"
+        />
+        <div *ngIf="profileForm.get('role')?.invalid && profileForm.get('role')?.touched" class="text-red-500 text-sm mt-1">
+          Role is required.
+        </div>
+      </div>
+  
+      <div class="flex justify-between">
+        <button
+          type="submit"
+          [disabled]="profileForm.invalid"
+          class="bg-blue-500 text-white px-6 py-3 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+        >
+          Update
+        </button>
+
+        <button
+          type="button"
+          class="bg-green-500 text-white px-6 py-3 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400"
+          (click)="requestPublisher()"
+        >
+          Request to be a publisher
+        </button>
+
+        <button
+          routerLink="/main-feed"
+          type="button"
+          class="bg-red-500 text-white px-6 py-3 rounded-md hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-gray-400"
+        >
+          Delete My Account
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
