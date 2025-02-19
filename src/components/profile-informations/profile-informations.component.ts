@@ -1,14 +1,13 @@
-import { CommonModule, NgIf } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-profile-informations',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './profile-informations.component.html',
   styleUrls: ['./profile-informations.component.css'],
 })
@@ -25,6 +24,7 @@ export class ProfileInformationsComponent {
       role: ['user', Validators.required],
     });
   }
+
   ngOnInit() {
     const userDataRaw = sessionStorage.getItem('userData');
     if (userDataRaw) {
@@ -39,13 +39,14 @@ export class ProfileInformationsComponent {
       });
     }
   }
+
   onSave() {
     if (this.profileForm.valid) {
       console.log('Form Data: ', this.profileForm.value);
     } else {
       Swal.fire({
         title: 'Oops!',
-        text: 'PLease fill in all the infomations!',
+        text: 'Please fill in all the required fields!',
         icon: 'error',
         confirmButtonText: 'OK',
         confirmButtonColor: '#d33',
@@ -53,5 +54,6 @@ export class ProfileInformationsComponent {
     }
   }
 
-  requestPublisher(){}
+  requestPublisher() {
+  }
 }

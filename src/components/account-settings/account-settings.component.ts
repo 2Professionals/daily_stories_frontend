@@ -1,15 +1,18 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ProfileInformationsComponent } from '../profile-informations/profile-informations.component';
 
 @Component({
   selector: 'app-account-settings',
   standalone: true,
+  imports: [CommonModule, ProfileInformationsComponent],
   templateUrl: './account-settings.component.html',
-  styleUrl: './account-settings.component.css'
+  styleUrl: './account-settings.component.css',
 })
 export class AccountSettingsComponent {
-  selectedSection = 'Profile';
+  activeComponent: string = 'profile';
 
-  setSection(section: string) {
-    this.selectedSection = section;
+  setActiveComponent(component: string) {
+    this.activeComponent = component;
   }
 }

@@ -1,14 +1,34 @@
-<div class="flex min-h-screen bg-gray-200 p-4">
-    <nav class="w-64 bg-blue-900 text-white rounded-lg p-4 flex flex-col space-y-4">
-      <a href="#" class="p-2 rounded-lg hover:bg-blue-700">Profile</a>
-      <a href="#" class="p-2 rounded-lg hover:bg-blue-700">Security</a>
-      <a href="#" class="p-2 rounded-lg hover:bg-blue-700">Notifications</a>
-      <!-- <a href="#" class="p-2 rounded-lg hover:bg-blue-700">Billing</a> -->
-    </nav>
+<div class="flex flex-col md:flex-row h-screen bg-gray-100 p-4">
+    <div class="w-full md:w-1/5 bg-[#1E3A8A] text-white rounded-lg p-4">
+      <h2 class="text-xl font-semibold mb-6">Settings</h2>
+      <ul>
+        <li class="mb-3">
+          <button
+            class="w-full text-left py-2 px-4 rounded-lg hover:bg-[#1E40AF]"
+            (click)="setActiveComponent('profile')"
+          >
+            Profile Information
+          </button>
+        </li>
+        <li class="mb-3">
+          <button
+            class="w-full text-left py-2 px-4 rounded-lg hover:bg-[#1E40AF]"
+            (click)="setActiveComponent('security')"
+          >
+            Security Settings
+          </button>
+        </li>
+      </ul>
+    </div>
   
-    <div class="flex-1 bg-white rounded-lg p-6 ml-4 shadow-md">
-      <h1 class="text-xl font-bold">Account Settings</h1>
-      <p class="text-gray-600 mt-2">Select an option from the sidebar.</p>
+    <div class="w-full md:w-4/5 bg-white rounded-lg p-6 shadow-md ml-4">
+      <ng-container *ngIf="activeComponent === 'profile'">
+        <app-profile-informations></app-profile-informations>
+      </ng-container>
+  
+      <ng-container *ngIf="activeComponent === 'security'">
+        <p class="text-gray-700">Security settings will go here...</p>
+      </ng-container>
     </div>
   </div>
   
