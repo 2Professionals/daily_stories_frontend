@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { RouterLink, Router } from '@angular/router';
 import { SignUpService } from '../../services/signup.service';
+import { AuthService } from '../../services/authentication.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import Swal from 'sweetalert2';
 
@@ -25,7 +26,8 @@ export class SignupComponent {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private signUpService: SignUpService
+    private signUpService: SignUpService,
+    private authService: AuthService
   ) {
     this.signupForm = this.fb.group({
       user_username: ['', [Validators.required, Validators.minLength(3)]],
@@ -51,6 +53,9 @@ export class SignupComponent {
             confirmButtonText: 'OK',
             confirmButtonColor: '#3085d6',
           }).then(() => {
+            console.log("data after signup =====> ", data.data);
+            this.authService.saveToken(data.token);
+            sessionStorage.setItem('userData', JSON.stringify(data.data));
             this.router.navigate(['/main-feed']);
           });
         } else {
