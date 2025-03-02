@@ -53,7 +53,6 @@ export class SignupComponent {
             confirmButtonText: 'OK',
             confirmButtonColor: '#3085d6',
           }).then(() => {
-            console.log("data after signup =====> ", data.data);
             this.authService.saveToken(data.token);
             sessionStorage.setItem('userData', JSON.stringify(data.data));
             this.router.navigate(['/main-feed']);
