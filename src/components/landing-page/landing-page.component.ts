@@ -54,7 +54,6 @@ export class LandingPageComponent {
       this.authService.login(this.signInForm.value).subscribe({
         next: (data) => {          
           if (data.status) {
-            console.log("data after signin ===>", data.data);
             this.authService.saveToken(data.token);
             sessionStorage.setItem('userData', JSON.stringify(data.data));
             this.isLoading = false;
