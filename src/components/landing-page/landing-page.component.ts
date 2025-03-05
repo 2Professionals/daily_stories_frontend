@@ -8,7 +8,6 @@ import { AuthService } from '../../services/authentication.service';
 import Swal from 'sweetalert2';
 import { environment } from '../../environments/environment';
 
-
 @Component({
   selector: 'app-landing-page',
   standalone: true,
@@ -25,12 +24,12 @@ export class LandingPageComponent {
   signInForm: FormGroup;
   errorMessage: string | null = null;
   isLoading = false;
-  current_year:number = new Date().getFullYear();
+  current_year: number = new Date().getFullYear();
 
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router,
+    private router: Router
   ) {
     //still validation to be implemented: , Validators.minLength(3)
 
@@ -52,16 +51,17 @@ export class LandingPageComponent {
     if (this.signInForm.valid) {
       this.isLoading = true;
       this.authService.login(this.signInForm.value).subscribe({
-        next: (data) => {          
+        next: (data) => {
           if (data.status) {
             this.authService.saveToken(data.token);
             sessionStorage.setItem('userData', JSON.stringify(data.data));
-            this.isLoading = false;
-            
+
             if (data.data.role_name === 'super admin') {
               window.location.href = environment.dashboard_url;
             } else {
-              this.router.navigate(['/main-feed']);
+              this.router.navigate(['/main-feed']).then(() => {
+                this.isLoading = false;
+              });
             }
           }
         },
@@ -80,5 +80,4 @@ export class LandingPageComponent {
       });
     }
   }
-  
 }
