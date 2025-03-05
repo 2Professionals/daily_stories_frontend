@@ -31,11 +31,10 @@ export class LandingPageComponent {
     private authService: AuthService,
     private router: Router
   ) {
-    //still validation to be implemented: , Validators.minLength(3)
 
     this.signInForm = this.fb.group({
-      user_email: ['', [Validators.required]],
-      user_password: ['', [Validators.required]],
+      user_email: ['', [Validators.required, Validators.email]],      
+      user_password: ['', [Validators.required, Validators.minLength(3)]],
     });
   }
 
