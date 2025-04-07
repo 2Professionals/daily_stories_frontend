@@ -21,7 +21,7 @@ import Swal from 'sweetalert2';
 })
 export class SignupComponent {
   signupForm: FormGroup;
-  isLoading = false; 
+  isLoading = false;
 
   constructor(
     private fb: FormBuilder,
@@ -44,11 +44,11 @@ export class SignupComponent {
       const formData = this.signupForm.value;
 
       this.signUpService.registerUser(formData).subscribe((data: any) => {
+        this.isLoading = false;
         if (data.status) {
-          this.isLoading = false;
           Swal.fire({
             title: 'Success!',
-            text: 'Your are successfully signed up! Welcome.',
+            text: 'You are successfully signed up! Welcome.',
             icon: 'success',
             confirmButtonText: 'OK',
             confirmButtonColor: '#3085d6',
@@ -58,10 +58,9 @@ export class SignupComponent {
             this.router.navigate(['/main-feed']);
           });
         } else {
-          this.isLoading = false;
           Swal.fire({
             title: 'Error!',
-            text: 'Failed to signed you app! something went wrong. Please try again.',
+            text: 'Failed to sign you up! Please try again.',
             icon: 'error',
             confirmButtonText: 'OK',
             confirmButtonColor: '#d33',
@@ -71,15 +70,13 @@ export class SignupComponent {
         }
       });
     } else {
-      this.isLoading = false;
+      this.signupForm.markAllAsTouched();
       Swal.fire({
-        title: 'Error!',
-        text: 'Invalid data! Please try again.',
-        icon: 'error',
+        title: 'Missing Fields',
+        text: 'Please fill in all the required fields.',
+        icon: 'warning',
         confirmButtonText: 'OK',
-        confirmButtonColor: '#d33',
-      }).then(() => {
-        this.signupForm.reset();
+        confirmButtonColor: '#f59e0b',
       });
     }
   }
